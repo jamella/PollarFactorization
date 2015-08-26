@@ -2,7 +2,6 @@
 #email : w.zongyu@gmail.com
 
 require 'openssl'
-require 'optparse'
 
 class PollarExp
   def initialize(n, b=2)
@@ -46,38 +45,3 @@ private
   end
 end
 
-class ARGVParser
-  def initialize
-    @@options = {b: 2}
-    @banner = "Usage pollar.rb [options]"
-    OptionParser.new do |opts|
-      opts.banner = @banner
-
-      opts.on("-n N", "Value to factor") do |v|
-        options[:n] = v
-      end
-
-      opts.on("-b B", "Base value (optional)") do |v|
-        options[:b]
-      end
-
-    end.parse!
-    exit if sanitycheck == false
-  end
-
-  def sanitycheck
-    if @@options[:n].nil?
-      puts "#{@banner} #-h for help"
-      return false
-    end
-  end
-
-  def options
-    @@options
-  end
-end
-
-opts = ARGVParser.new.options
-p, q =PollarExp.new(opts[:n].to_i, opts[:b].to_i).exploit
-puts "p = #{p}"
-puts "q = #{q}"

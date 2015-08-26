@@ -1,10 +1,17 @@
 # PollarFactorization
+
+**How to use**
+  * pollard_api.rb, the API, Usage `p, q = PollardExp.new(n, b).exp`, n is the value to factor, b is the base number which is optional
+  * pollard.rb, the tool, Usage `./pollard.rb -n N -b B`, the n and b options is the same as above
+
+**Introduction**
 If either p − 1 or q − 1 has only small prime factors, n can be factored quickly by Pollard's p − 1 algorithm
 Recommand to use factorization tool (eg. yafu).  
 
 Since the big prime seems to be safe prime. Futher [3](https://en.wikipedia.org/wiki/Pollard's_p_%E2%88%92_1_algorithm).  
 
 This tool [GMP-ECM](http://gforge.inria.fr/projects/ecm/) fully implement the attack
+
 
 **Algorithm**  
   1. Chose an integer fix bound B (often go for b=2 the increase)
